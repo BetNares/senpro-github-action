@@ -25,6 +25,7 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
+      - uses: actions/checkout@v2
       - name: Build app on VM
         uses: appleboy/ssh-action@master
         with:
@@ -36,7 +37,7 @@ jobs:
             eval "$(ssh-agent -s)"
             ssh-add ~/.shh/senpro-ssh-6
             echo "Cek folder project";
-            [ ! -d "/home/seniorproject-rabu/senpro/456361/modul01/senpro-github-action/"] &&
+            [ ! -d "/home/seniorproject-rabu/senpro/456361/modul01/senpro-github-action/" &&
               {
                 echo "Repository belum di clone. Cloning...";
                 mkdir -p ~/senpro/456361/modul01;
@@ -56,3 +57,4 @@ jobs:
                 npm install;
                 npm run build;
               }
+            ]
